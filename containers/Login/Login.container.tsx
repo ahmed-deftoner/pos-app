@@ -1,11 +1,9 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
-export default function Home() {
-  const router = useRouter();
-
-  const handleLogin = () => {
-    router.push("/products"); // <-- change this to your route
+export default function LoginContainer() {
+  const handleLogin = async () => {
+    await signIn("square", { callbackUrl: "/products" });
   };
 
   return (
